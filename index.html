@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Macklin Farrell | GIS and planning portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #EEF1EF;
+      --surface: #FFFFFF;
+      --ink: #16242C;
+      --muted: #4D6573;
+      --rule: #C6D0CD;
+      --route: #2F6E8F;
+      --stop: #D9A12B;
+      --focus: #2F6E8F;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141C21;
+        --surface: #1C262C;
+        --ink: #E3E9E7;
+        --muted: #98AAB3;
+        --rule: #33424A;
+        --route: #6FA6C4;
+        --stop: #E2B04A;
+        --focus: #8FC0DA;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Public Sans', system-ui, sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+
+    .page {
+      max-width: 64rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Intro */
+    header {
+      padding: clamp(3.5rem, 10vw, 7rem) 0 clamp(2.5rem, 6vw, 4rem);
+    }
+    h1 {
+      margin: 0;
+      font-weight: 300;
+      font-size: clamp(2.75rem, 8vw, 5.25rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .lede {
+      max-width: 34rem;
+      margin: 1.5rem 0 0;
+      font-size: clamp(1.15rem, 2.2vw, 1.375rem);
+      line-height: 1.45;
+      color: var(--muted);
+    }
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.75rem;
+      margin: 2rem 0 0;
+      padding: 0;
+      list-style: none;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* Projects as stops on a line */
+    .projects { padding-bottom: 5rem; }
+    .projects h2 {
+      margin: 0 0 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .line {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .line::before {
+      content: "";
+      position: absolute;
+      left: 0.5rem;
+      top: 0.6rem;
+      bottom: 0;
+      width: 4px;
+      margin-left: -2px;
+      background: var(--route);
+      border-radius: 2px;
+    }
+    .stop {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: 1.5rem 2.5rem;
+      padding: 0 0 4rem 2.5rem;
+    }
+    .stop:last-child { padding-bottom: 0; }
+    .stop::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.3rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 3px solid var(--route);
+    }
+    .when {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--muted);
+    }
+    .stop h3 {
+      margin: 0.25rem 0 0.75rem;
+      font-size: clamp(1.5rem, 3vw, 1.875rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .stop p.summary { margin: 0 0 1rem; max-width: 36rem; }
+    .tools {
+      margin: 0 0 1.25rem;
+      font-size: 0.9375rem;
+      color: var(--muted);
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-weight: 600;
+    }
+    .links a.primary {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: var(--ink);
+      color: var(--bg);
+      border-radius: 4px;
+      text-decoration: none;
+    }
+    .links a.primary:hover { background: var(--route); color: #fff; }
+    .links li { display: flex; align-items: center; }
+
+    figure.preview { margin: 0; }
+    figure.preview a {
+      display: block;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: var(--surface);
+    }
+    figure.preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.9375rem;
+      color: var(--muted);
+    }
+    footer p { margin: 0; }
+
+    @media (max-width: 760px) {
+      .stop { grid-template-columns: 1fr; padding-left: 2rem; }
+      figure.preview { order: -1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Macklin Farrell</h1>
+      <p class="lede">GIS analyst in the Puget Sound region. I make maps and analysis about how the region grows: transit, housing, and land use.</p>
+      <ul class="contact">
+        <li><a href="mailto:macklin.farrell@gmail.com">Email</a></li>
+        <li><a href="https://github.com/mfarrell-gis">GitHub</a></li>
+      </ul>
+    </header>
+
+    <main class="projects">
+      <h2>Projects</h2>
+      <ol class="line">
+        <li class="stop">
+          <div>
+            <p class="when">Winter 2026, UW GEOG 458</p>
+            <h3>Tracks to Tomorrow</h3>
+            <p class="summary">A scrollytelling map of Seattle’s Link light rail and the multifamily housing built around it. Stations appear as they opened, 772 permits show where development followed, and a rent comparison shows what changed near the tracks.</p>
+            <p class="tools">Mapbox GL JS, JavaScript, SDCI permit data, Sound Transit data</p>
+            <ul class="links">
+              <li><a class="primary" href="https://mfarrell-gis.github.io/seattle-link-tod-analysis/">Open the map</a></li>
+              <li><a href="https://github.com/mfarrell-gis/seattle-link-tod-analysis">Code and methods</a></li>
+            </ul>
+          </div>
+          <figure class="preview">
+            <a href="https://mfarrell-gis.github.io/seattle-link-tod-analysis/" tabindex="-1" aria-hidden="true">
+              <img src="img/tracks-to-tomorrow.jpg" width="1000" height="750" alt="">
+            </a>
+          </figure>
+        </li>
+      </ol>
+    </main>
+
+    <footer>
+      <p>B.A. in Geography: Data Science, University of Washington, 2026.</p>
+    </footer>
+  </div>
+</body>
+</html>
